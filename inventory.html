@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>     Inventory Management</title>
+  <link rel="stylesheet" href="/css files/inventory .css">
+  <link rel="stylesheet" href="/.css">
+</head>
+<body>
+  <!-- navbar -->
+  <aside class="navbar">
+    <div class="logo">Solexa</div>
+
+      <a href="#" id="Dashboard"><img src="/img/icons8-dashboard-24.png" alt="Icon 1"><span>Dashboard</span></a>
+      <a href="#" id="sales"><img src="/img/icons8-sales-50.png" alt="Icon 2"><span>sales</span></a>
+      <div class="dropdown"></div>
+        <a href="#" id="customer"><img src="/img/icons8-customer-50.png" alt="Icon 3"><span>Customer Profile</span></a>
+
+   
+    
+    
+  </aside>
+  <div class="container">
+    <header class="header">
+       Inventory
+    
+  
+    </header>
+    <div class="filters">
+        
+
+        <!-- Date Search -->
+        <div class="search-container">
+            <input type="text" placeholder=" Search Serial Number..." readonly> <!-- readonly to prevent typing -->
+            <div class="dropdown">
+              <a href="#">Apple</a>
+              <a href="#">Banana</a>
+              <a href="#">Orange</a>
+              <a href="#">Grapes</a>
+              <a href="#">Watermelon</a>
+              <a href="#">Pineapple</a>
+              <a href="#">Mango</a>
+            </div>
+          </div>
+          <input type="text" placeholder=" Product  Name" readonly> <!-- readonly to prevent typing -->
+
+      
+        <div class="search-container">
+          <input type="text" placeholder=" Status..." readonly> <!-- readonly to prevent typing -->
+          <div class="dropdown">
+            <a href="#">In Stock</a>
+            <a href="#">Out Of Stock</a>
+            
+          </div>
+        </div>
+     <!-- Date Search  -->
+     <input type="date" title="📅 Filter Date">
+    </div>
+    <table class="sales-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Serial Number</th>
+          <th>Product Name</th>
+          <th>Date/Time</th>
+          <th>Quantity</th>
+          <th>RS/Item</th>
+          <th>total cost</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="sales-body">
+        <tr>
+          <td>1</td>
+          <td>SKU001</td>
+          <td>Wireless Mouse</td>
+          <td>2025-05-01/ 4:50am</td>
+          <td>10</td>
+          <td>RS50</td>
+          <td>RS500</td>
+          <td>In Stock</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>SKU002</td>
+          <td>Keyboard</td>
+          <td>2025-05-01/ 4:50am</td>
+          <td>15</td>
+          <td>RS30</td>
+          <td>RS450</td>
+          <td>In Stock</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>SKU003</td>
+          <td>Gaming Headset</td>
+          <td>2025-05-01/ 4:50am</td>
+          <td>8</td>
+          <td>RS75</td>
+          <td>RS600</td>
+          <td>In Stock</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>SKU004</td>
+          <td>Webcam</td>
+          <td>2025-05-01/ 4:50am</td>
+          <td>12</td>
+          <td>RS20</td>
+          <td>RS240</td>
+          <td>In Stock</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>SKU005</td>
+          <td>Monitor</td>
+          <td>2025-05-01/ 4:50am</td>
+          <td>5</td>
+          <td>RS100</td>
+          <td>RS500</td>
+          <td>In Stock</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>SKU006</td>
+          <td>USB-C Hub</td>
+          <td>2025-05-01/ 4:50am</td>
+          <td>7</td>
+          <td>RS45</td>
+          <td>RS315</td>
+          <td>In Stock</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>SKU007</td>
+          <td>Bluetooth Speaker</td>
+          <td>2025-05-01/ 4:50am</td>
+          <td>6</td>
+          <td>RS60</td>
+          <td>RS360</td>
+          <td>In Stock</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>    
+  <script src="/js/inven.js"></script>
+</body>
+
+
+</html>

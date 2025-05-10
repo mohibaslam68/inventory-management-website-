@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css files/newsale.css">
+  
+    <title>Document</title>
+</head>
+<body>
+  <aside class="navbar">
+    <div class="logo">Solexa</div>
+
+      <a href="#" id="sales"><img src="/img/icons8-sales-50.png" alt="Icon 1"><span>Sales</span></a>
+      <a href="#" id="inventory"><img src="/img/icons8-inventory-50.png" alt="Icon 2"><span>Inventory</span></a>
+      <div class="dropdown"></div>
+        <a href="#" id="customer"><img src="/img/icons8-customer-50.png" alt="Icon 3"><span>Customer Profile</span></a>
+   
+   
+   
+    
+    
+  </aside>
+
+
+
+
+
+    <div class="add-new-sale">
+        <header class="header">NEW SALE</header>
+    
+        <div class="add-new-sale-form">
+          <label>Customer:</label>
+          <input type="text" placeholder="add Customer">
+          
+          <span><label>Phone Number:</label></span>
+          <input type="text" placeholder="add phone Number">
+      
+          <span><label>CNIC:</label></span>
+          <input type="text" placeholder="add CNIC">
+          <button id="" class="btn">add Customer</button>
+        </div>
+      
+        <div class="add-new-sale-form">
+          <label>Product:</label>
+          <input id="productInput" type="text" placeholder="add Product">
+          <button id="addToCartBtn" class="btn">➔ Add to Cart</button>
+        </div>
+      
+        <div class="cart" id="cartDisplay">
+          <h3>🛒 Cart:</h3>
+          <p><em>Cart is empty</em></p>
+        </div>
+      
+    
+        <div class="form-actions">
+          <button class="btn">Complete Sale</button>
+          <button class="btn">Send WhatsApp Invoice</button>
+        </div>
+    
+        <div class="payment-options">
+          <button class="btn">💵 Cash</button>
+          <button class="btn">🏦 Card</button>
+          <button class="btn">✉️ Print Invoice</button>
+        </div>
+    </div>
+    <script>
+      const cart = [];
+      const addToCartBtn = document.getElementById('addToCartBtn');
+      const productInput = document.getElementById('productInput');
+      const cartDisplay = document.getElementById('cartDisplay');
+  
+      function updateCartDisplay() {
+        if (cart.length === 0) {
+          cartDisplay.innerHTML = '<h3>🛒 Cart:</h3><p><em>Cart is empty</em></p>';
+          return;
+        }
+  
+        let total = 0;
+        let cartHTML = '<h3>🛒 Cart:</h3>';
+  
+        cart.forEach(item => {
+          const itemTotal = item.quantity * item.price;
+          total += itemTotal;
+          cartHTML += `<p>${item.quantity}x ${item.name} – $${itemTotal}</p>`;
+        });
+  
+        cartHTML += `<p><strong>TOTAL: $${total}</strong></p>`;
+        cartDisplay.innerHTML = cartHTML;
+      }
+  
+      addToCartBtn.addEventListener('click', () => {
+        const productName = productInput.value.trim();
+        const price = 10; // fixed price for simplicity
+  
+        if (!productName) {
+          alert("Please enter a product name.");
+          return;
+        }
+  
+        const existing = cart.find(item => item.name === productName);
+  
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          cart.push({ name: productName, quantity: 1, price });
+        }
+  
+        productInput.value = '';
+        updateCartDisplay();
+      });
+  
+      // Initial render
+      updateCartDisplay();
+    </script>
+</body>
+</html>

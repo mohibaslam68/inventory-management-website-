@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sales Management</title>
+  <link rel="stylesheet" href="/css files/sales.css">
+  <link rel="stylesheet" href="/.css">
+</head>
+
+<body>
+  <!-- navbar -->
+  <aside class="navbar">
+    <div class="logo">Solexa</div>
+
+      <a href="#" id="Dashboard"><img src="/img/icons8-dashboard-24.png" alt="Icon 1"><span>Dashboard</span></a>
+      <a href="#" id="inventory"><img src="/img/icons8-inventory-50.png" alt="Icon 2"><span>Inventory</span></a>
+      <div class="dropdown"></div>
+      <a href="#" id="customer"><img src="/img/icons8-customer-50.png" alt="Icon 3"><span>Customer Profile</span></a>
+   
+
+
+
+  </aside>
+  <div class="container">
+    <header class="header">
+      💰 SALES
+      <button class="btn" id="newSaleBtn">➕ </button>
+
+    </header>
+    <div class="filters">
+      <input type="text" placeholder=" Customer Name...">
+
+      <!-- Date Search -->
+      <div class="search-container">
+        <input type="text" placeholder=" Customer Contact" readonly> <!-- readonly to prevent typing -->
+
+      </div>
+      <!-- Date Search  -->
+      <input type="date" title="📅 Filter Date">
+
+
+    </div>
+    <button class="search-button" id="">🔍</button>
+    <table class="sales-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Date/Time</th>
+          <th>Customer</th>
+          <th>Customer Contact</th>
+          <th>Total</th>
+          <th>Invoice Number</th>
+          <th>View</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody id="sales-body">
+        <tr>
+          <td>1</td>
+          <td>24-Apr/ 4:50am</td>
+          <td>Ali</td>
+          <td>+7777868668686</td>
+          <td>RS50</td>
+          <td>TRK001</td>
+          <td><button class="action-btn"><img src="/img/icons8-eye1-48 copy.png" alt=""></button></td>
+
+          <td><button class="action-btn"><img src="/img/icons8-edit-50.png" alt=""></button></td>
+
+          <td><button class="action-btn"><img src="/img/icons8-delete-80.png" alt=""></button></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>23-Apr/ 4:50am</td>
+          <td>Ahmed</td>
+          <td>+7777868668686</td>
+          <td>RS30</td>
+          <td>TRK002</td>
+          <td><button class="action-btn"><img src="/img/icons8-eye1-48 copy.png" alt=""></button></td>
+
+
+          <td><button class="action-btn"><img src="/img/icons8-edit-50.png" alt=""></button></td>
+
+          <td><button class="action-btn"><img src="/img/icons8-delete-80.png" alt=""></button></td>
+
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>22-Apr/ 4:50am</td>
+          <td>Sara</td>
+          <td>+7777868668686</td>
+          <td>RS75</td>
+          <td>TRK003</td>
+          <td><button class="action-btn"><img src="/img/icons8-eye1-48 copy.png" alt=""></button></td>
+
+
+          <td><button class="action-btn"><img src="/img/icons8-edit-50.png" alt=""></button></td>
+          <td><button class="action-btn"><img src="/img/icons8-delete-80.png" alt=""></button></td>
+
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>21-Apr/ 4:50am</td>
+          <td>John</td>
+          <td>+7777868668686</td>
+          <td>RS20</td>
+          <td>TRK004</td>
+          <td><button class="action-btn"><img src="/img/icons8-eye1-48 copy.png" alt=""></button></td>
+
+          <td><button class="action-btn"><img src="/img/icons8-edit-50.png" alt=""></button></td>
+
+          <td><button class="action-btn"><img src="/img/icons8-delete-80.png" alt=""></button></td>
+
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>20-Apr/ 4:50am</td>
+          <td>Fatima</td>
+          <td>+7777868668686</td>
+          <td>RS100</td>
+          <td>TRK005</td>
+          <td><button class="action-btn"><img src="/img/icons8-eye1-48 copy.png" alt=""></button></td>
+
+
+          <td><button class="action-btn"><img src="/img/icons8-edit-50.png" alt=""></button></td>
+          <td><button class="action-btn"><img src="/img/icons8-delete-80.png" alt=""></button></td>
+
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>19-Apr/ 4:50am</td>
+          <td>Omar</td>
+          <td>+7777868668686</td>
+          <td>RS45</td>
+          <td>TRK006</td>
+          <td><button class="action-btn"><img src="/img/icons8-eye1-48 copy.png" alt=""></button></td>
+
+
+          <td><button class="action-btn"><img src="/img/icons8-edit-50.png" alt=""></button></td>
+
+          <td><button class="action-btn"><img src="/img/icons8-delete-80.png" alt=""></button></td>
+
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>18-Apr/ 4:50am</td>
+          <td>Linda</td>
+          <td>+7777868668686</td>
+          <td>RS60</td>
+          <td>TRK007</td>
+          <td><button class="action-btn"><img src="/img/icons8-eye1-48 copy.png" alt=""></button></td>
+          <td><button class="action-btn"><img src="/img/icons8-edit-50.png" alt=""></button></td>
+
+          <td><button class="action-btn"><img src="/img/icons8-delete-80.png" alt=""></button></td>
+
+        </tr>
+      </tbody>
+    </table>
+    
+  <script src="/js/sale.js"></script>
+</body>
+
+
+</html>

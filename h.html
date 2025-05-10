@@ -1,0 +1,685 @@
+!
+!<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sales Management</title>
+
+</head>
+
+<body>
+<style>/* Reset */
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Main Body */
+    body {
+        font-family: 'Arial', sans-serif;
+        height: 100%;
+    }
+    
+    /* Navigation Bar */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 95vh;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        background: #3f51b5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        border-radius: 20px;
+        overflow: hidden;
+        z-index: 1000;
+    }
+    
+    /* Navigation Links Links */
+    .navbar a {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 40px;
+        padding: 10px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        transition: all 0.1s ease;
+        white-space: nowrap;
+    }
+    
+    /* Navigtion Heading App Name */
+    .navbar h1 {
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+    }
+    
+    /* Navigation Links Icon */
+    .navbar img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        margin: 0px;
+        position: relative;
+    }
+    
+    /* Navigation Bar Selected Item */
+    .selected-item {
+        background-color: #5765b67b;
+        border-radius: 15px;
+        padding: 5px;
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Main Content Panel */
+    .main-content {
+        width: calc(100% - 100px - 60px);
+        height: calc(100vh - 40px);
+        position: relative;
+        margin-left: calc(100px + 50px);
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-top: 20px;
+        transition: margin-left 0.3s ease;
+    }
+    
+    /* Logged In User Name */
+    .login {
+        width: auto;
+        color: #3f51b5;
+        font-size: 13px;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+    }
+    
+    /* Page Title/Page Name */
+    .page-title {
+        width: auto;
+        color: black;
+        font-size: 28px;
+        padding-top: 0px;
+        margin-top: 0px;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+    
+    /* Filter Container */
+    .filters {
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    /* New Sale Button */
+    .search-btn {
+        width: 40px;
+        height: 40px;
+        background-color: #3f51b5;
+        color: white;
+        font-size: 10px;
+        margin-left: 40px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* New Sale Button Image */
+    .search-btn img {
+        width: 10px;
+        height: 10px;
+    }
+    
+    /* New Sale Button */
+    .plus-btn {
+        width: 40px;
+        height: 40px;
+        background-color: #3f51b5;
+        color: white;
+        font-size: 20px;
+        margin-left: 20px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* New Sale Button Image */
+    .plus-btn img {
+        width: 10px;
+        height: 10px;
+    }
+    
+    /* Grid For Cards */
+    .card-grid {
+        max-width: 75%;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(200px, auto));
+        gap: 20px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    
+    /* Card Grid Image */
+    .card-grid-img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Card */
+    .card {
+        height: 20vh;
+        background: white;
+        border-radius: 25px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    
+    /* Card Title */
+    .card-title {
+        font-size: 20px;
+        color: #3f51b5;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    
+    /* Card Subtitle */
+    .card-subtitle {
+        width: 20vh;
+        font-size: 12px;
+        color: black;
+        font-weight: 500;
+        margin-top: 5px;
+    }
+    
+    /* Eye Icon */
+    .eye-icon {
+        width: 20px;
+        height: 20px;
+        margin-top: 20px;
+        align-content: center;
+    }
+    
+    /* Recent Sales Title */
+    .sale-record {
+        width: auto;
+        color: black;
+        font-size: 15px;
+        padding-top: 10px;
+        margin-top: 0px;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+    
+    /* Scrollable Table Wrapper */
+    .table-container {
+        max-height: 47vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-radius: 15px;
+        margin-top: 10px;
+    }
+    
+    /* Keep table width consistent */
+    .table-container table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+    
+    /* Fix header when scrolling */
+    .table-container thead {
+        height: 50px;
+        position: sticky;
+        top: 0;
+        background-color: #3f51b5;
+        z-index: 2;
+    }
+    
+    /* Sales Table Invoice Icon Container */
+    .invoice-icon-cont {
+        width: 20px;
+        text-align: center;
+    }
+    
+    /* Sales Table Invoice Icon */
+    .invoice-icon {
+        width: 20px;
+        height: 20px;
+        display: block;
+    }
+    
+    /* Recent Sales Table Header Title */
+    thead {
+        color: white;
+        background-color: #3f51b5;
+    }
+    
+    /* Th */
+    th {
+        color: white;
+        font-size: 13px;
+        font-weight: 400;
+    }
+    
+    /* Table Icon */
+    tr img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    /* Tabel Items */
+    th,
+    td {
+        padding: 13px;
+        font-size: 13px;
+        text-align: left;
+        font-weight: 500;
+    }
+    
+    tbody tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+    
+    tbody tr:nth-child(even) {
+        background-color: #f4f4f4;
+    }
+    
+    /* Form Group Label */
+    .form-group label {
+        display: inline-block;
+        width: 100px;
+    }
+    
+    /* Input */
+    input[type="text"],
+    select {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid black;
+        background: white;
+        color: black;
+    }
+    
+    /* Input Date */
+    input[type="date"] {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid black;
+        background: white;
+        color: black;
+    }</style>
+  <!-- Main Container -->
+  <div style="display: flex; flex-direction: row;">
+
+    <!-- Navigation Bar -->
+    <aside class="navbar">
+      <!-- Title -->
+      <h1> Solexa </h1>
+      <!-- Divider -->
+      <hr style="width: 60%; height: 1px; background-color: #ccc; margin-top: 25px;" />
+      <!-- Navigation Links -->
+      <!-- Home -->
+      <a href="dashboard.html" id="home"><img src="/img/home_icon_nav.png" alt="Home"></a>
+      <!-- Sales -->
+      <div class="selected-item">
+        <a style="margin-top: 0px;" href="sales.html" id="sales"><img src="/img/sales_icon_nav.png" alt="Sale"></a>
+      </div>
+      <!-- Inventory -->
+      <a href="#" id="inventory"><img src="/img/inventory_icon_nav.png" alt="Inventory"></span></a>
+      <!-- Customer -->
+      <a href="#" id="customer"><img src="/img/customer_icon_nav.png" alt="Customer"></a>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <!-- User Login Name -->
+      <h1 class="login">Sohaib</h1>
+      <!-- Page Title/ Page Name -->
+      <h1 class="page-title">Sales</h1>
+
+      <!-- Search Filters -->
+      <div style="display: flex; flex-direction: row;">
+        <div class="filters">
+          <!-- Customer Name -->
+          <input type="text" id="customerName" placeholder="Customer Name">
+          <!-- Customer Contact -->
+          <input type="text" id="customerContact" placeholder="Customer Contact">
+
+          <!-- Dropdowns -->
+          <select id="filterDay" title="📅 Day">
+            <option value="">Day</option>
+          </select>
+
+          <select id="filterMonth" title="📅 Month">
+            <option value="">Month</option>
+          </select>
+
+          <select id="filterYear" title="📅 Year">
+            <option value="">Year</option>
+          </select>
+        </div>
+
+        <!-- Search Button -->
+        <div class="search-btn" id="searchBtn">
+          <img src="/icons/search_icon.png" alt="">
+        </div>
+
+        <!-- New Sale Button -->
+        <div class="plus-btn" id="newSaleBtn">
+          <img src="/icons/plus_icon.png" alt="">
+        </div>
+      </div>
+
+      <!-- Card Grid -->
+      <div class="card-grid">
+
+        <!-- Yearly Sales Card -->
+        <div class="card">
+          <img class="card-grid-img" src="../img/todays_sale_icon.png" alt="">
+          <div style="display: flex; justify-content: space-between;">
+            <div>
+              <p class="card-title" id="yearlySale" data-actual-value="0">•••••</p>
+              <p class="card-subtitle">Yearly Sale</p>
+            </div>
+            <img class="eye-icon" src="/icons/view_icon.png" alt="" onclick="toggleAmountVisibility(this)">
+          </div>
+        </div>
+
+        <!-- Monthly Sales Card -->
+        <div class="card">
+          <img class="card-grid-img" src="../img/todays_sale_icon.png" alt="">
+          <div style="display: flex; justify-content: space-between;">
+            <div>
+              <p class="card-title" id="monthlySale" data-actual-value="0">•••••</p>
+              <p class="card-subtitle">Monthly Sale</p>
+            </div>
+            <img class="eye-icon" src="/icons/view_icon.png" alt="" onclick="toggleAmountVisibility(this)">
+          </div>
+        </div>
+
+        <!-- Monthly Profit Card -->
+        <div class="card">
+          <img class="card-grid-img" src="../icons/profit_icon.png" alt="">
+          <div style="display: flex; justify-content: space-between;">
+            <div>
+              <p class="card-title" data-actual-value="Rs. 200,000">•••••</p>
+              <p class="card-subtitle">Monthly Profit</p>
+            </div>
+            <img class="eye-icon" src="/icons/view_icon.png" alt="" onclick="toggleAmountVisibility(this)">
+          </div>
+        </div>
+
+        <!-- Total Products Sold Card -->
+        <div class="card">
+          <img class="card-grid-img" src="../img/product_sold_icon.png" alt="">
+          <div style="display: flex; justify-content: space-between;">
+            <div>
+              <p class="card-title" id="productsSold" data-actual-value="0">•••••</p>
+              <p class="card-subtitle">Products Sold</p>
+            </div>
+            <img class="eye-icon" src="/icons/view_icon.png" alt="" onclick="toggleAmountVisibility(this)">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="latest-order">
+        <h1 class="sale-record">Sales record</h1>
+        <div class="table-container">
+          <table id="salesTable">
+            <thead>
+              <tr>
+                <th>Order no.</th>
+                <th>Date/Time</th>
+                <th>Customer</th>
+                <th>Customer Contact</th>
+                <th>Total</th>
+                <th>Invoice no.</th>
+                <th>View</th>
+                <th>Edit</th>
+              </tr>
+            </thead>
+            <tbody id="salesTableBody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="/js/sale.js"></script>
+  <script src="/js/all.js"></script>
+
+  <script>
+
+    // --- SALES TABLE --- //
+
+    // SALES DATA (EXAMPLE)
+    const salesData = [
+      {
+        orderNo: "OR-1",
+        date: "10 April 2025 10:50 PM",
+        customer: "Sohaib Asgher",
+        customerContact: "03000402888",
+        total: 50000,
+        invoiceNo: "INV-0011"
+      },
+      {
+        orderNo: "OR-2",
+        date: "04 April 2025 04:50 PM",
+        customer: "Ahmed",
+        customerContact: "03000402888",
+        total: 78000,
+        invoiceNo: "INV-0017"
+      },
+      {
+        orderNo: "OR-3",
+        date: "10 May 2025 12:50 PM",
+        customer: "Ayaz",
+        customerContact: "03000402888",
+        total: 78000,
+        invoiceNo: "INV-0017"
+      },
+    ];
+
+    // FORMAT DATE FOR DISPLAYING
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+
+      const day = String(date.getDate()).padStart(2, '0'); // Adds leading zero if day is single digit
+      const month = date.toLocaleString('default', { month: 'long' }); // Full month name
+      const year = date.getFullYear();
+
+      let hours = date.getHours();
+      const minutes = String(date.getMinutes()).padStart(2, '0'); // Adds leading zero if minutes are single digit
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+
+      // Convert to 12-hour format
+      hours = hours % 12;
+      hours = hours ? hours : 12; // The hour '0' should be '12'
+
+      // Format the final date string
+      return `${day} ${month} ${year} ${hours}:${minutes} ${ampm}`;
+    }
+
+    // FORMAT CURRENCY
+    function formatCurrency(value) {
+      return 'Rs. ' + value.toLocaleString('en-PK');
+    }
+
+    // INSERT DATA INTO TABLE
+    function populateSalesTable() {
+      const salesTableBody = document.getElementById('salesTableBody');
+
+      // Clear any existing rows before adding new ones
+      salesTableBody.innerHTML = '';
+
+      // Loop through the data and create rows dynamically
+      salesData.forEach(sale => {
+        const row = document.createElement('tr');
+
+        // Create and insert cells for each property of sale
+        row.innerHTML = `
+            <td>${sale.orderNo}</td>
+            <td>${formatDate(sale.date)}</td>
+            <td>${sale.customer}</td>
+            <td>${sale.customerContact}</td>
+            <td>${sale.total}</td>
+            <td>${sale.invoiceNo}</td>
+            <td><img src="/icons/view_icon.png" alt="View"></td>
+            <td><img src="/icons/edit_icon.png" alt="Edit"></td>
+        `;
+
+        // Append the row to the table body
+        salesTableBody.appendChild(row);
+      });
+    }
+
+    // POPULATE SALES TABLE ON PAGE LOAD
+    window.addEventListener('DOMContentLoaded', populateSalesTable);
+
+
+    // --- CALCULATIONS --- //
+
+    // PARSE STRING DATE FOR FILTERING 
+    function parseDateString(dateStr) {
+      const date = new Date(dateStr);
+      return date;
+    }
+
+    // TOGGLE AMOUNT VISIBILITY
+    function toggleAmountVisibility(eyeIcon) {
+      const p = eyeIcon.closest('.card').querySelector('.card-title');
+      const isHidden = p.textContent.includes("•");
+      if (isHidden) {
+        const actualValue = p.getAttribute("data-actual-value");
+        p.textContent = actualValue;
+      } else {
+        p.textContent = "•••••";
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const daySelect = document.getElementById("filterDay");
+      const monthSelect = document.getElementById("filterMonth");
+      const yearSelect = document.getElementById("filterYear");
+
+      for (let i = 1; i <= 31; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i;
+        daySelect.appendChild(option);
+      }
+
+      for (let i = 1; i <= 12; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i;
+        monthSelect.appendChild(option);
+      }
+
+      const currentYear = new Date().getFullYear();
+      for (let i = currentYear; i >= currentYear - 10; i--) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i;
+        yearSelect.appendChild(option);
+      }
+
+      const rows = document.querySelectorAll("table tbody tr");
+      rows.forEach(row => {
+        const totalCell = row.cells[4];
+        const amount = parseFloat(totalCell.textContent.replace(/[^0-9.-]/g, ""));
+        if (!isNaN(amount)) {
+          totalCell.textContent = formatCurrency(amount);
+        }
+      });
+    });
+
+    document.getElementById("searchBtn").addEventListener("click", function () {
+      const nameFilter = document.getElementById("customerName").value.trim().toLowerCase();
+      const contactFilter = document.getElementById("customerContact").value.trim();
+      const dayFilter = parseInt(document.getElementById("filterDay").value);
+      const monthFilter = parseInt(document.getElementById("filterMonth").value);
+      const yearFilter = parseInt(document.getElementById("filterYear").value) || new Date().getFullYear();
+
+      let yearlyTotal = 0;
+      let monthlyTotal = 0;
+      let totalProducts = 0;
+
+      const rows = document.querySelectorAll("tbody tr");
+
+      rows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        const dateCell = cells[1].textContent.trim(); // Extract the date text
+        const customerName = cells[2].textContent.trim().toLowerCase();
+        const customerContact = cells[3].textContent.trim();
+        const totalAmount = parseFloat(cells[4].textContent.replace(/[^0-9.-]/g, '')); // Ensure it's a number
+
+        const orderDate = parseDateString(dateCell);
+        const orderYear = orderDate.getFullYear();
+        const orderMonth = orderDate.getMonth() + 1; // Months are zero-indexed
+        const orderDay = orderDate.getDate();
+
+        const matchesYear = orderYear === yearFilter;
+        const matchesMonth = !monthFilter || orderMonth === monthFilter;
+        const matchesDay = !dayFilter || orderDay === dayFilter;
+        const matchesName = !nameFilter || customerName.includes(nameFilter);
+        const matchesContact = !contactFilter || customerContact.includes(contactFilter);
+
+        const shouldDisplay = matchesYear && matchesMonth && matchesDay && matchesName && matchesContact;
+        row.style.display = shouldDisplay ? "table-row" : "none";
+
+        if (matchesYear) yearlyTotal += totalAmount;
+        if (matchesYear && matchesMonth) monthlyTotal += totalAmount;
+        if (matchesYear && matchesMonth && matchesDay) totalProducts += 1;
+      });
+
+      // Format the totals before displaying
+      const yearlyStr = formatCurrency(yearlyTotal); // Apply format
+      const monthlyStr = formatCurrency(monthlyTotal); // Apply format
+
+      const yearlyEl = document.getElementById("yearlySale");
+      yearlyEl.textContent = yearlyStr;
+      yearlyEl.setAttribute("data-actual-value", yearlyStr);
+
+      const monthlyEl = document.getElementById("monthlySale");
+      monthlyEl.textContent = monthlyStr;
+      monthlyEl.setAttribute("data-actual-value", monthlyStr);
+
+      const productsEl = document.getElementById("productsSold");
+      productsEl.textContent = totalProducts;
+      productsEl.setAttribute("data-actual-value", totalProducts);
+    });
+
+  </script>
+
+</body>
+
+
+</html>

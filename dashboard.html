@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/css files/dashbord.css">
+</head>
+<body>
+ 
+  
+  <div class="main-container">
+    <!-- navbar -->
+   <aside class="navbar">
+    <div class="logo">Solexa</div>
+  
+      <a href="#" id="sales"><img src="/img/icons8-sales-50.png" alt="Icon 1"><span>Sales</span></a>
+      <a href="#" id="inventory"><img src="/img/icons8-inventory-50.png" alt="Icon 2"><span>Inventory</span></a>
+      <div class="dropdown"></div>
+        <a href="#" id="customer"><img src="/img/icons8-customer-50.png" alt="Icon 3"><span>Customer Profile</span></a>
+  
+   
+    
+    
+  </aside>
+  
+  
+    <!-- main-page -->
+    <main class="main-page">
+      <header class="main-page-header">
+        <h1></h1>
+        <div class="header-content">
+         
+          <div class="profile">Ayaz</div>
+        </div>
+      </header>
+
+      <section class="main-dashboard">
+        <h2>Dashboard</h2>
+        <div class="main-dashboard-cards">
+          <div class="main-dashboard-card">
+            <div class="icon sales-icon">
+              <img src="/img/1756059-200.png" alt="">
+            </div>
+            <div class="main-dashboard-card-details">
+              <p class="main-dashboard-card-amount" style="display: none;">$ 67,68679454</p>
+              <p class="main-dashboard-card-label"> daily Sales</p>
+              <span>
+                <img src="/img/icons8-eye-48.png" alt="" onclick="toggleAmountVisibility(this)">
+              </span>
+            </div>
+            
+          </div>
+
+
+
+
+          
+          <div class="main-dashboard-card">
+            <div class="icon balance-icon">
+              <img src="/img/icons8-total-sales-64.png" alt="">
+            </div>
+            <div class="main-dashboard-card-details">
+              <p class="main-dashboard-card-amount" style="display: none;">$ 67,68679454</p>
+              <p class="main-dashboard-card-label">Monthly Sales</p>
+              <span>
+                <img src="/img/icons8-eye-48.png" alt="" onclick="toggleAmountVisibility(this)">
+              </span>
+            </div>
+            
+          </div>
+          <div class="main-dashboard-card">
+            <div class="icon payout-icon">
+              <img src="/img/3328151-200.png" alt="">
+            </div>
+            <div class="main-dashboard-card-details">
+              <p class="main-dashboard-card-amount" style="display: none;">70</p>
+              <p class="main-dashboard-card-label">Total product sold</p>
+              <span>
+                <img src="/img/icons8-eye-48.png" alt="" onclick="toggleAmountVisibility(this)">
+              </span>
+            </div>
+            
+            
+          </div>
+        </div>
+        <div class="latest-order">
+          <h3>Recent Order</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Order/No</th>
+                <th>Date/Time</th>
+                <th>Quantity</th>
+                <th>Invoice/No</th>
+                <th>Customer</th>
+                <th>Customer Contact</th>
+                <th>Total</th>
+            <th>Invoice</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#657575756</td>
+                <td>13 April 2025/ 4:50am</td>
+                <td>20</td>
+                <td>INV-001</td>
+                <td>Minaal Betee</td>
+                <td>+1234567890</td>
+                <td>RS44,767.78</td>
+                <td style="width: 60px; text-align: center; vertical-align: middle;">
+                  <img src="/img/icons8-pdf-50.png" alt="PDF Icon" style="width: 32px; height: 32px; display: block; margin: auto;">
+                </td>
+              </tr>
+              <tr>
+                <td>#657575757</td>
+                <td>13 April 2025/ 4:50am</td>
+                <td>15</td>
+                <td>INV-002</td>
+                <td>Ali Khan</td>
+                <td>+1987654321</td>
+                <td>RS12,345.00</td>
+                <td style="width: 60px; text-align: center; vertical-align: middle;">
+                  <img src="/img/icons8-pdf-50.png" alt="PDF Icon" style="width: 32px; height: 32px; display: block; margin: auto;">
+                </td>
+              </tr>
+              <tr>
+                <td>#657575758</td>
+                <td>13 April 2025/ 4:50am</td>
+                <td>10</td>
+                <td>INV-003</td>
+                <td>Sara Ahmed</td>
+                <td>+1122334455</td>
+                <td>RS6,789.00</td>
+                <td style="width: 60px; text-align: center; vertical-align: middle;">
+                  <img src="/img/icons8-pdf-50.png" alt="PDF Icon" style="width: 32px; height: 32px; display: block; margin: auto;">
+                </td>
+              </tr>
+              <tr>
+                <td>#657575759</td>
+                <td>13 April 2025/ 4:50am</td>
+                <td>25</td>
+                <td>INV-004</td>
+                <td>John Doe</td>
+                <td>+1222333444</td>
+                <td>RS15,000.00</td>
+                <td style="width: 60px; text-align: center; vertical-align: middle;">
+                  <img src="/img/icons8-pdf-50.png" alt="PDF Icon" style="width: 32px; height: 32px; display: block; margin: auto;">
+                </td>
+              </tr>
+              <tr>
+                <td>#657575760</td>
+                <td>13 April 2025/ 4:50am</td>
+                <td>30</td>
+                <td>INV-005</td>
+                <td>Jane Smith</td>
+                <td>+1333444555</td>
+                <td>RS25,500.00</td>
+                <td style="width: 60px; text-align: center; vertical-align: middle;">
+                  <img src="/img/icons8-pdf-50.png" alt="PDF Icon" style="width: 32px; height: 32px; display: block; margin: auto;">
+                </td>
+              </tr>
+              <tr>
+                <td>#657575761</td>
+                <td>13 April 2025/ 4:50am</td>
+                <td>18</td>
+                <td>INV-006</td>
+                <td>Omar Faruk</td>
+                <td>+1444555666</td>
+                <td>RS8,950.00</td>
+                <td style="width: 60px; text-align: center; vertical-align: middle;">
+                  <img src="/img/icons8-pdf-50.png" alt="PDF Icon" style="width: 32px; height: 32px; display: block; margin: auto;">
+                </td>
+              </tr>
+              <tr>
+                <td>#657575762</td>
+                <td>13 April 2025/ 4:50am</td>
+                <td>22</td>
+                <td>INV-007</td>
+                <td>Emily Zhang</td>
+                <td>+1555666777</td>
+                <td>RS17,320.00</td>
+                <td style="width: 60px; text-align: center; vertical-align: middle;">
+                  <img src="/img/icons8-pdf-50.png" alt="PDF Icon" style="width: 32px; height: 32px; display: block; margin: auto;">
+                </td>
+              </tr>
+              <tr>
+                <td>#657575763</td>
+                <td>13 April 2025/ 4:50am</td>
+                <td>12</td>
+                <td>INV-008</td>
+                <td>Mohammed Ali</td>
+                <td>+1666777888</td>
+                <td>RS9,800.00</td>
+                <td style="width: 60px; text-align: center; vertical-align: middle;">
+                  <img src="/img/icons8-pdf-50.png" alt="PDF Icon" style="width: 32px; height: 32px; display: block; margin: auto;">
+                </td>
+              </tr>
+              <tr>
+                <td>#657575764</td>
+                <td>13 April 2025/ 4:50am</td>
+                <td>16</td>
+                <td>INV-009</td>
+                <td>Rachel Green</td>
+                <td>+1777888999</td>
+                <td>RS11,760.00</td>
+                <td style="width: 60px; text-align: center; vertical-align: middle;">
+                  <img src="/img/icons8-pdf-50.png" alt="PDF Icon" style="width: 32px; height: 32px; display: block; margin: auto;">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  <script src="/js/all.js"></script>
+ 
+  
+</body>
+</html>
